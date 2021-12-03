@@ -7,11 +7,16 @@ void Rectangle_ctor(
 {
 
     static const struct Vtable vtable = {
-        &Rectangle_draw, 
-        &Rectangle_area
+        (void (*) (Shape const * const me))&draw_rectangle, 
+        (uint32_t (*)(Shape const * const me))&get_rectangle_area
     };
 
-    Shape_ctor(&me->super, x0, y0);
+    Shape_ctor(&me->super, x0, y0); 
+    
+    //now shape's vptr will point to the vtable we defined 
+    //..above instead of the one it currently points to (the shape's vtable)
+    me->super.vptr = &vtable;
+    
     me->width = w0; 
     me->height = h0; 
 }
