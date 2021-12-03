@@ -1,4 +1,4 @@
-#include "rectangle.h"
+#include "polymorphism/rectangle.h"
 
 void Rectangle_ctor(
     Rectangle * const me, 
@@ -6,9 +6,10 @@ void Rectangle_ctor(
     uint16_t w0, uint16_t h0)
 {
 
-    /*first: create the base class urself
-    this is done implicitly in cpp 
-    */
+    static const struct Vtable vtable = {
+        &Rectangle_draw, 
+        &Rectangle_area
+    };
 
     Shape_ctor(&me->super, x0, y0);
     me->width = w0; 
