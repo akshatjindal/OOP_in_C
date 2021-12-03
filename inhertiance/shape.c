@@ -12,8 +12,7 @@ void Shape_ctor(
 void move_shape_by(
     Shape * const me,
     int16_t dx, 
-    int16_t dy 
-)
+    int16_t dy)
 {
     me->x += dx; 
     me->y += dy; 
@@ -22,8 +21,7 @@ void move_shape_by(
 
 uint16_t distance_from_shape(
     Shape const * const me,
-    Shape const * other 
-)
+    Shape const * other)
 {
     //return arbitrary distance (unsigned)
     return 5; 
